@@ -41,40 +41,8 @@ int main() {
     for (i = 0; i < SIZE; i++)
         printf("%.2f", unit[i]);
     sel(unit,&unit[SIZE],p);
+    return 0;
 }
-void sel(double send[LOUS], double olen[SIZE],double *p[LOUS])
-{
-    unsigned ios;
-    char flan = 1;
-    double open[LOUS] = { 2.1,3.1,4.1,5.1,6.1,9.1,0.0,4.1,3.3,1.2 };
-    double* secold[LOUS];
-    double* longw;
-    for (ios = 0; ios < LOUS; ios++) {
-        printf("\n");
-        printf("Сортировка 2:%.2f\n", open[ios]);
-    }
-    for (ios = 0; ios < LOUS; ios++) {
-        secold[ios] = &open[ios];
-    }
-    do {
-        flan = 0;
-        for (ios = 1; ios <LOUS; ios++) {
-            if (*secold[ios] < *secold[ios - 1]) {
-                longw = secold[ios];
-                secold[ios] = secold[ios-1];
-                secold[ios - 1] = longw;
-           
-                flan = 1;
-
-            }
-        }
-    } while (flan);
-    printf("Сортированный массив 2");
-    for (ios = 0; ios < LOUS ; ios++) {
-        printf("%.2f", *secold[ios]);
-    }
-}
-    
 
 
 
