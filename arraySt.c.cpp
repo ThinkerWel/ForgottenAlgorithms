@@ -40,7 +40,7 @@ int main() {
     printf("сортированный массив не был изменен\n");
     for (i = 0; i < SIZE; i++)
         printf("%.2f", unit[i]);
-    sel(unit,&unit[SIZE],p);
+   
     return 0;
 }
 
