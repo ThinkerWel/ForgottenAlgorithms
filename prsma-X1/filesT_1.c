@@ -58,9 +58,6 @@ char name[100]={"\nYou Lucky programmer !!!\n "};
 
 
 
-FILE *fd;
-    fd=fopen("releas.c","r");
-
 char password[]="leson";
 char ps[20];
 
@@ -70,7 +67,7 @@ char ps[20];
         }while(strcmp(password,ps)!=0);
 
         printf("\n Great, good luck!\n ");
-        fclose(fd);
+        fclose(fp);
 
 
         return 0;
