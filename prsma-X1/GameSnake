@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+int main(void)
+{
+
+        system("color 2F");
+
+        char rmt[25][31];
+        char dog;
+
+        int x=10,y=5;
+        int ix,iy;
+        int ax=5,ay=3;
+        srand(time(NULL));
+
+        do{
+
+        sprintf(rmt[0],"##########################");
+           for(int i=1;i<15;i++)
+           sprintf(rmt[i],"#                        #");
+
+           sprintf(rmt[14],"##########################");
+
+           rmt[y][x]='@';
+           rmt[ay][ax]='*';
+            system("cls");
+
+                   for(int i=0;i<15;i++)
+                    printf("%s\n",rmt[i]);
+
+            dog=getch();
+                ix=x;
+                iy=y;
+
+            if(dog =='w') y--;
+            if(dog =='s') y++;
+            if(dog=='a') x--;
+            if(dog=='d') x++;
+
+            if(rmt[y][x]=='#')
+            {
+
+                x=ix;
+                y=iy;
+            }
+
+            if((x==ax) &&(y==ay))
+            {
+
+                ax=rand()*1.0/RAND_MAX*18+1;
+                ay=rand()*1.0/RAND_MAX*8+1;
+
+            }
+
+        }
+        while(dog!='e');
+
+        return 0;
+}
