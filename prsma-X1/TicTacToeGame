@@ -1,1 +1,144 @@
 
+#include <stdio.h>
+#include <stdlib.h>
+#define LEN 40
+int a[3][3];
+
+struct play{
+ char player[LEN];
+ char player_two[LEN];
+};
+int examitation();
+char s_gets(char *st,int n);
+void move(int );
+
+void nul()
+{ int i,j;
+
+
+ for(i=1; i<=3; i++)
+ {
+
+  for (j=1;j<=3;j++)
+  {
+      a[i][j]=0;
+        }
+        }
+    }
+int main()
+{
+    int players;
+    struct play game;
+    puts("                    ---------- Tic tac toe game ----------   ");
+nul();
+    puts("Enter name players :");
+    s_gets(game.player,LEN);
+    s_gets(game.player_two,LEN);
+
+    printf("\n firts player : > %s",game.player);
+    printf("\n second player : > %s\n",game.player_two);
+
+    while(players==0){
+    if(players==0)
+    {
+        move(1);
+         players=examitation();
+    }
+ if(players==0)
+ {
+
+     move(2);
+       players=examitation();
+
+ }
+
+    printf("\n 1  2  3 \n");
+
+    for(int i=1;i<=3;i++){
+        printf("%d",i);
+    for(int j=1;j<=3;j++)
+    {
+        if(a[i][j]==0);
+        printf("| ");
+        if(a[i][j]==1)
+            printf("O ");
+        if(a[i][j]==2)
+            printf("X ");
+    }
+    printf("|\n");
+ printf("____________\n");
+    }
+
+
+
+    if(players==1) printf("\nWin first player !\n");
+    if(players==2) printf("\n in second player !\n");
+ }
+    return 0;
+}
+int examitation()
+{
+    int i;
+    int num=0;
+    for(i=1;i<=3;i++)
+    {
+        if(a[i][1]==1 && a[i][2]==1 && a[i][3]==1) {num=1;}
+
+    }
+    for(i=1;i<=3;i++)
+    {
+        if(a[i][1]==1 &&a[2][i]==1 &&a[3][i]==1) {num=1;}
+
+    }
+    if(a[1][1]==1 && a[2][2]==1 &&a[3][3]==1){num=1;}
+    if(a[1][3]==1 && a[2][2]==1 && a[3][1]==1) {num=1;}
+
+    for(i=1;i<=3;i++)
+    {
+        if(a[i][1]==2 &a[i][2]==2 &&a[i][3]==2) {num =2;}
+    }
+    for(i=1;i<=3;i++)
+    {
+        if(a[1][i]==2 &&a[2][i]==2 && a[3][i]==2) {num=2;}
+    }
+
+    if(a[1][1]==2 &&a[2][2]==2 &&a[3][3]==2) {num=2;}
+    if(a[1][3]==2 && a[2][2]==2 && a[3][1]==2) {num=2;}
+    return num;
+
+}
+void move(int n)
+{
+    int run;
+    int stb,str;
+    int num=0;
+    while(num==0)
+    {
+        printf("Enter number  string and column : \n");
+        scanf("%d",&run);
+        stb=run%10;
+        str=(run-stb)/10;
+        if(a[str][stb]==0 && (run==11 || run ==12 || run ==13|| run==21 || run==22|| run==23 || run==31 || run==32 || run==33 )) (num=1);
+    }
+    if(n==1) {a[str][stb]=1;}
+    if(n==2){a[str][stb]=2;}
+}
+
+char s_gets(char *st,int n)
+{
+
+    char *ret_val;
+    char *find;
+    ret_val=fgets(st,n,stdin);
+    if(ret_val)
+    {
+
+        find=strchr(st,'\n');
+        if(find)
+            *find='\0';
+            else
+                while(getchar()!='\n')
+                continue;
+        }
+        return  ret_val;
+}
