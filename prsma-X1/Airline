@@ -1,1 +1,207 @@
 
+#include <stdio.h>
+#include <string.h>
+#include <stdbool.h>
+#include <ctype.h>
+#include <time.h>
+#define LEN 81
+
+char *s_gets(char *st,int n);
+char menu(void);
+void mesta(void);
+void colMesta(void);
+void eatline(void);
+int Seats[4][10];
+void information(void);
+void timePolet(void);
+
+
+typedef void(*fpt)(void);
+
+struct registr {
+    int telephone[LEN];
+    int pasport[LEN];
+    char time[LEN];
+    char sity[LEN];
+};
+
+
+int main(void)
+{
+
+
+    printf("\n                       ------------ Airline Smartavia ------------               \n");
+    char input;
+
+    while((input=menu())!='n')
+        switch(input)
+    {
+        case 'a' :information();timePolet();mesta();colMesta(); break;
+        case 'b' : colMesta(); break;
+        case 'c': information();break;
+        case 'e': timePolet(); break;
+      case 'f': return 0 ; break;
+
+    }
+
+    puts("Программа завершена");
+
+}
+char menu(void)
+{
+    char ans;
+    int count;
+    printf("\na)Показать  свободные места и не свободные места \n");
+    printf("b)Забронировать место для пассажира\n");
+     printf("c)Узнать данные сидящего пассажира\n");
+    printf("e)Вычислить время полета\n");
+    printf("f)Выйти из программы\n");
+    ans=getchar();
+
+    eatline();
+    while(strchr("abcdef",ans)==NULL)
+    {
+        puts("Введите a,b,c,d,e or f");
+        ans=getchar();
+            eatline();
+
+    }
+
+    return ans;
+
+}
+
+void eatline(void)
+{
+    while(getchar()!='\n')
+        continue;
+}
+
+void mesta()
+{
+
+  int i;
+  int mesta[12];
+  printf("Ввведите желаемое место(а) :\n");
+            printf("----------------------------------------------\n");
+            printf("\n Места 1,2,4,6,8,9,20,10,23,13,12,11,31 \n");
+                printf("----------------------------------------------\n");
+        for(int i=0;i<3;i++){
+    scanf("%d",&mesta[i]);
+        }
+
+  for(int i=0;i<3;i++){
+  if(mesta[i]==1 || mesta[i]==2 || mesta[i]==4 || mesta[i]==6 ||  mesta[i]== 8  ||  mesta[i]==9 || mesta[i]==20 || mesta[i]==10 ||  mesta[i]==23
+     || mesta[i]==13 || mesta[i]==12 || mesta[i]== 11 ||mesta[i]== 31)
+
+  {
+  printf("  Свободные Места -> %d\n",mesta[i]);
+        }
+    else{
+        printf(" Место %d занято или отсутсвует в списке наших мест\n",mesta[i]);
+
+    }
+    printf("\n");
+
+        }
+}
+void colMesta(void)
+{
+
+  int a,x;
+            int Seats[4][10]={0};
+            printf("\t\tSeats");
+            printf("\t 1 2 3 4 5 6 7 8 9 10\n");
+
+                for(int i=0;i<3;i++)
+                {
+                    printf("\t\tRows = %d :",i+1);
+                    for(int j=0;j<10;j++)
+                        printf("%d ",Seats[i][j]);
+                        printf("\n");
+
+                }
+                printf("\n\n");
+
+
+
+    printf("\n");
+
+    int rows,mesto;
+    printf("Какой ряд для вас уместен ?  \n");
+    scanf("%d",&rows);
+    printf("Какое место вы хотите забронировать ?\n");
+    scanf("%d",&mesto);
+    if(rows> 3 || mesto>10)
+    {
+        printf("Неверный ввод попробуйте снова !\n");
+        colMesta();
+    }
+
+    else if(Seats[rows-1][mesto-1]!=0)
+        {
+        printf("Место уже зарезервировано !\n");
+    colMesta();
+    }
+            else
+            {
+                Seats[rows-1][mesto-1]=1;
+                printf("Бронирование завершено !\n\n");
+            printf("\n");
+        printf("\nВаш ряд -> %d забронирован вместе с вашим местом -> %d\n ",Seats[mesto][rows]);
+                }
+
+           puts("Удачного полета !");
+
+
+}
+
+void timePolet(void)
+{
+    int AT,BT,XT,PT,H,M;
+    int at,bt,ct,df;
+    int sutki=0;
+    printf("\t\n Введите 4 числа !\n");
+    scanf("%d%d%",&AT,&BT,&XT,&PT);
+    at=AT+XT;
+    bt=BT+PT;
+    ct=M/60;
+    H+=df;
+    M%=60;
+    H%=24;
+
+    printf("Время полета составит %d часа \n",H);
+
+
+
+}
+
+void information(void)
+{
+    struct registr phone;
+    int i,j;
+
+    printf("\nВведите ваш номер телефона номер паспорта и приелимое для вас время :  \n  ");
+    for( i=0;i<8;i++){
+    scanf("%d",&phone.telephone[i]);
+    scanf("%d",&phone.pasport[i]);
+    }
+     scanf("%s",&phone.time);
+
+     scanf("%s",&phone.sity);
+        printf("\n");
+
+    puts("Благодарим за предоставленные вами данные,ваша заявка будет обработана в течение 30 минут !");
+    for(int i=0;i<1;i++){
+    printf("\nВаши обработанные данные :\n ");
+    printf("\n--------------------------------------\n");
+           printf("            \n| %d |   <-Telephone       ",phone.telephone[i]);
+    printf("                   \n| %d |  <-Pasport   ",phone.pasport[i]);
+    printf("                   \n| %s | <- Time",phone.time);
+    printf("                   \n| %s | <-Sity  ",phone.sity);
+    printf("\n--------------------------------------\n");
+        }
+    printf("\n");
+   puts("Далее вам следует определится с местом и рядом в котором вы хотите расположится \n ");
+
+}
