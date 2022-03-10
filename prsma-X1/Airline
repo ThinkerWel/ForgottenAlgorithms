@@ -6,7 +6,7 @@
 #include <time.h>
 #define LEN 81
 
-char *s_gets(char *st,int n);
+
 char menu(void);
 void mesta(void);
 void colMesta(void);
