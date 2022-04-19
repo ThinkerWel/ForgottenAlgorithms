@@ -56,3 +56,53 @@ int main(void)
     disemvowel(&str);
 }
 
+
+
+
+
+
+// third program
+
+
+enum dispect_er {BLUE,RED,GREEN};
+
+typedef struct{
+char *name;
+enum dispect_er type;
+}dispect;
+
+void blue(dispect rt)
+{
+    printf("%s  цвет Неба \n ",rt.name);
+
+}
+void red(dispect rt)
+{
+    printf("%s цвет крови \n",rt.name);
+}
+void green(dispect rt)
+{
+    printf("%s цвет травы \n",rt.name);
+}
+
+
+int main(void){
+dispect choice[]={
+    {"Голубой",BLUE},{"Красный",RED},{"Зеленый",GREEN}
+};
+    for(int i=0;i<3;i++){
+        switch(choice[i].type)
+    {
+    case BLUE:
+        blue(choice[i]);
+        break;
+    case RED:
+        red(choice[i]);
+        break;
+    case GREEN:
+        green(choice[i]);
+        break;
+    }
+        }
+    return 0;
+}
