@@ -1,0 +1,54 @@
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <Windows.h>
+
+
+int main(void)
+{
+	int clock, minutes, sec;
+	int Delay = 1000;
+	printf("Set time :\n ");
+	scanf_s("%d %d %d", &clock, &minutes, &sec);
+
+	if (clock > 12)
+	{
+		printf("Error #1!");
+	}
+	if (minutes > 59) {
+		printf("Eror #2");
+	}
+	if (sec > 59)
+	{
+		printf("Error #3 ");
+	}
+
+
+	while (1)
+	{
+		sec += 1;
+
+		if (sec > 59){
+			minutes = +1;
+			sec = 0;
+		}
+		if (minutes > 59) {
+			clock += 1;
+			minutes = 0;
+		}
+		if (clock > 12) {
+			clock= 1;
+			minutes = 0;
+			sec = 0;
+		}
+		printf("\n*****************\n");
+		printf("Clock:");
+		printf(" %02d:%02d:%02d", clock, minutes, sec);
+		printf("\n*****************\n");
+		Sleep(Delay);
+		system("cls");
+	}
+
+	getchar();
+	return 0;
+}
